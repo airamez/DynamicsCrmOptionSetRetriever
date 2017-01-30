@@ -33,7 +33,7 @@ namespace DyanmicsCrmOptionSetRetriever
             }
             catch (Exception ex)
             {
-                string msg = "Error loading the configuration. Please chek the '{0}' key on your confifuration file";
+                string msg = "Error loading the configuration. Please chek the '{0}' key on your confifuration file.";
                 throw new Exception(string.Format(msg, OPTIONSET_SETTINGS), ex);
             }
         }
@@ -41,23 +41,43 @@ namespace DyanmicsCrmOptionSetRetriever
         public static Microsoft.Xrm.Sdk.OptionSetValue GetOptionFromExternalString(string entityName, string optionsetName, string externalString)
         {
             var settings = _settings.FirstOrDefault();
+            Entity entitySettings = GetEntity(entityName, settings);
+            Optionset optionset = GetMethod(entityName, optionsetName, entitySettings);
+            Mapping optionSetCrmValue = GetOptionSetValue(entityName, externalString, optionset);
+            return new Microsoft.Xrm.Sdk.OptionSetValue(optionSetCrmValue.crm_value);
+        }
+
+        private static Entity GetEntity(string entityName, OptionSetSettings settings)
+        {
             Entity entitySettings = settings.entities.FirstOrDefault(e => string.Compare(e.name, entityName, true) == 0);
             if (entitySettings == null)
             {
                 throw new Exception(string.Format("Entity name '{0}' not found in '{1}' configuration key", entityName, OPTIONSET_SETTINGS));
             }
+
+            return entitySettings;
+        }
+
+        private static Optionset GetMethod(string entityName, string optionsetName, Entity entitySettings)
+        {
             Optionset optionset = entitySettings.optionsets.FirstOrDefault<Optionset>(o => string.Compare(o.name, optionsetName, true) == 0);
             if (optionset == null)
             {
                 throw new Exception(string.Format("OptionSet name '{0}' not found in '{1}' configuration key", entityName, OPTIONSET_SETTINGS));
             }
 
-            Mapping optionSetCrmValue = optionset.mapping.FirstOrDefault(m => string.Compare(m.external_string, externalString, true) == 0 );
+            return optionset;
+        }
+
+        private static Mapping GetOptionSetValue(string entityName, string externalString, Optionset optionset)
+        {
+            Mapping optionSetCrmValue = optionset.mapping.FirstOrDefault(m => string.Compare(m.external_string, externalString, true) == 0);
             if (optionSetCrmValue == null)
             {
                 throw new Exception(string.Format("External String with value '{0}' not found in '{1}' configuration key", entityName, OPTIONSET_SETTINGS));
             }
-            return new Microsoft.Xrm.Sdk.OptionSetValue(optionSetCrmValue.crm_value);
+
+            return optionSetCrmValue;
         }
     }
 }
