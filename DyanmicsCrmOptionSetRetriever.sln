@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DyanmicsCrmOptionSetRetriever", "DyanmicsCrmOptionSetRetriever\DyanmicsCrmOptionSetRetriever.csproj", "{CE2D1621-255D-4736-823C-18720AA1B52D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicsCrmOptionSetRetrieverTest", "DynamicsCrmOptionSetRetrieverTest\DynamicsCrmOptionSetRetrieverTest.csproj", "{229CE939-89F2-45D0-945C-2DD3ED964D13}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CE2D1621-255D-4736-823C-18720AA1B52D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE2D1621-255D-4736-823C-18720AA1B52D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE2D1621-255D-4736-823C-18720AA1B52D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE2D1621-255D-4736-823C-18720AA1B52D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{229CE939-89F2-45D0-945C-2DD3ED964D13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{229CE939-89F2-45D0-945C-2DD3ED964D13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{229CE939-89F2-45D0-945C-2DD3ED964D13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{229CE939-89F2-45D0-945C-2DD3ED964D13}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
