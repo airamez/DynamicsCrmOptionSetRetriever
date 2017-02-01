@@ -78,3 +78,5 @@ The application configuration file (app.config or web.config) would be like the 
   </appSettings>
 </configuration>
 ```
+
+Check the test project for an example
